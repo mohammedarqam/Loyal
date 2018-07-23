@@ -11,6 +11,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import * as firebase from 'firebase';
+import { LoginPage } from '../pages/login/login';
+import {GooglePlus} from '@ionic-native/google-plus';
+
 
 firebase.initializeApp({
   apiKey: "AIzaSyAJcctpBmc663-f52DT8SZdO74dFiJk4m0",
@@ -28,7 +31,8 @@ firebase.initializeApp({
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -40,12 +44,14 @@ firebase.initializeApp({
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GooglePlus,
   ]
 })
 export class AppModule {}
