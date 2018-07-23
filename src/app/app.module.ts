@@ -10,6 +10,17 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import * as firebase from 'firebase';
+
+firebase.initializeApp({
+  apiKey: "AIzaSyAJcctpBmc663-f52DT8SZdO74dFiJk4m0",
+  authDomain: "loyalcodebro.firebaseapp.com",
+  databaseURL: "https://loyalcodebro.firebaseio.com",
+  projectId: "loyalcodebro",
+  storageBucket: "loyalcodebro.appspot.com",
+  messagingSenderId: "80615788011"
+});
+
 
 @NgModule({
   declarations: [
