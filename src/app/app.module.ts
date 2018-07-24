@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -13,6 +11,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import * as firebase from 'firebase';
 import { LoginPage } from '../pages/login/login';
 import {GooglePlus} from '@ionic-native/google-plus';
+import { CartPage } from '../pages/cart/cart';
+import { OrdersPage } from '../pages/orders/orders';
+import { ProfilePage } from '../pages/profile/profile';
+import { MenuPage } from '../pages/menu/menu';
 
 
 firebase.initializeApp({
@@ -28,11 +30,13 @@ firebase.initializeApp({
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
     LoginPage,
+    CartPage,
+    OrdersPage,
+    ProfilePage,
+    MenuPage,
   ],
   imports: [
     BrowserModule,
@@ -41,11 +45,13 @@ firebase.initializeApp({
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    CartPage,
+    OrdersPage,
+    ProfilePage,
+    MenuPage,
   ],
   providers: [
     StatusBar,

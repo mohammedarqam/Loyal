@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
-import { NavController, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { LoginPage } from '../login/login';
 
-
-
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-orders',
+  templateUrl: 'orders.html',
 })
-export class HomePage {
+export class OrdersPage {
 
   constructor(
-  public navCtrl: NavController,
+  public navCtrl: NavController, 
   public app : App,
-  ) {
+  public navParams: NavParams) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
       }else{
@@ -22,7 +21,6 @@ export class HomePage {
       }
     });
   }
-
 
 
 }
