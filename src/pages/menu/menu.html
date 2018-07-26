@@ -1,10 +1,40 @@
 <ion-header>
   <ion-navbar color="primary" >
-    <ion-title></ion-title>
+    <ion-title>{{restaurant.RestaurantName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+    <ion-card *ngFor="let menuItem of menuItems; let i = index">
+        <ion-card-content>
+          <ion-card-title>
+            {{menuItem.Name}}
+          </ion-card-title>
+          <ion-item>
+            <p item-start>Price</p>
+            <p item-end>{{menuItem.Price}} </p>
+          </ion-item>
+          <ion-item>
+              <button ion-button item-end clear icon-only (click)="decrease(i)" >
+                  <ion-icon name="remove-circle"></ion-icon>
+                </button>
+                <p item-end>{{menuItem.Quantity}}</p>
+                <button ion-button item-end clear icon-only (click)="increase(i)" >
+                  <ion-icon name="add-circle"></ion-icon>
+                </button>
+                </ion-item>
+        </ion-card-content>
+      </ion-card>
+
+
 
 </ion-content>
+<ion-footer  >
+    <button ion-button block (click)="atCart()" > Add to Cart</button>
+</ion-footer>
+<ion-footer *ngIf="ftrBtns" >
+    <button ion-button (click)="gtCart()" > Go to Cart</button>
+    <button ion-button (click)="atCart()" > Add to Cart</button>
+</ion-footer>
+  

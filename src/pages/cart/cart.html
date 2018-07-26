@@ -1,12 +1,40 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Cart</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar color="primary" >
+      <ion-title>Cart</ion-title>
+      <ion-buttons end>
+        <button ion-button clear >Rs. {{totCartValue}} </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+  <ion-grid>
+  <ion-row *ngFor="let item of cartItems" >
+    <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        {{item.Name}}
+      </ion-card-title>
+      <p>
+       Quantity :  {{item.Quantity}}
+      </p>
+      <p>
+       Price :  {{item.Price}}
+      </p>
+      <p>
+       Value :  {{item.Value}}
+      </p>
+      <p>
+        <ion-icon name="trash" (click)="rfCart(item.key)"></ion-icon>
+      </p>
+    </ion-card-content>
+  </ion-card>
+  </ion-row>
+  </ion-grid>
+  
+  
+  </ion-content>
+  <ion-footer>
+    <button ion-button color="danger" full [disabled]="!data" (click)="order()">Place Order</button>
+  </ion-footer>

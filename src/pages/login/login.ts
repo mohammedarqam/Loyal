@@ -35,8 +35,6 @@ export class LoginPage {
   }
 
 
-
-
   
   login(){
     this.googleplus.login({
@@ -58,7 +56,7 @@ export class LoginPage {
           Email : suc.email,
           ProPic : suc.photoURL,
           CreditLimit : 0,
-          Creditused: 0
+          CreditUsed: 0
         }).then(()=>{
           this.presentToast("Logged In");
           this.navCtrl.setRoot(TabsPage);
