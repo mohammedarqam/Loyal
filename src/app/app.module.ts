@@ -16,6 +16,8 @@ import { OrdersPage } from '../pages/orders/orders';
 import { ProfilePage } from '../pages/profile/profile';
 import { MenuPage } from '../pages/menu/menu';
 import { OffersPage } from '../pages/offers/offers';
+import { NotificationsPage } from '../pages/notifications/notifications';
+import { NotiViewPage } from '../pages/noti-view/noti-view';
 
 
 firebase.initializeApp({
@@ -39,6 +41,8 @@ firebase.initializeApp({
     ProfilePage,
     MenuPage,
     OffersPage,
+    NotificationsPage,
+    NotiViewPage,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +59,8 @@ firebase.initializeApp({
     ProfilePage,
     MenuPage,
     OffersPage,
+    NotificationsPage,
+    NotiViewPage,
   ],
   providers: [
     StatusBar,

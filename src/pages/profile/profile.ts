@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { LoginPage } from '../login/login';
 import { OrdersPage } from '../orders/orders';
+import { NotificationsPage } from '../notifications/notifications';
 
 @IonicPage()
 @Component({
@@ -27,7 +28,10 @@ export class ProfilePage {
 
 
 
-
+  gtNoti(){
+    this.navCtrl.push(NotificationsPage);
+  }
+  
   gtOrders(){
     this.navCtrl.push(OrdersPage);
   }

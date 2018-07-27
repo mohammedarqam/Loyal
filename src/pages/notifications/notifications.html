@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>Notifications</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+
+<ion-card *ngFor="let noti of notifications" (click)="notiView(noti)" >
+    <ion-card-title>
+      {{noti.Notification}}
+    </ion-card-title>
+    <p>{{noti.NotificationDescription}} </p>
+    <p>{{noti.TimeStamp | date}} </p>
+</ion-card>
+
+</ion-content>

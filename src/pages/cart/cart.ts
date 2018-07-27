@@ -12,10 +12,11 @@ import { LoginPage } from '../login/login';
 })
 export class CartPage {
 
-  cartRef = firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).child("Cart/");
+  cartRef = firebase.database().ref("Carts/").child(firebase.auth().currentUser.uid).child("Items/");
+  cartValRef = firebase.database().ref("Carts/").child(firebase.auth().currentUser.uid).child("CartValue/");
   public cartItems : Array<any> = [];
   data : boolean = false;
-  totCartValue : number;
+  totCartValue : number=0;
 
   constructor(
   public navCtrl: NavController, 
@@ -61,24 +62,28 @@ export class CartPage {
   }
 
   getCartValue(){
-    this.cartRef.parent.child("CartValue").once("value",itemVal=>{
+    this.cartValRef.once("value",itemVal=>{
       this.totCartValue = itemVal.val();
-      console.log(this.totCartValue);
     })
 
   }
   
-  rfCart(key){
+  rfCart(item){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
     loading.present();
-    this.cartRef.child(key).remove().then(()=>{
+    this.cartRef.child(item.key).remove().then(()=>{
+      this.cartValRef.transaction(function(cData){
+        return cData - item.Value;
+      }).then(()=>{
       this.getCart();
-    }).then(()=>{
+      this.getCartValue();
       loading.dismiss();
+      })
     })
-  }
+  
+}
 
   order(){
     let loading = this.loadingCtrl.create({

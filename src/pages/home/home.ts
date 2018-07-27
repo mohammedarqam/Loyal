@@ -3,6 +3,7 @@ import { NavController, App } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { LoginPage } from '../login/login';
 import { MenuPage } from '../menu/menu';
+import { NotificationsPage } from '../notifications/notifications';
 
 
 
@@ -60,8 +61,8 @@ export class HomePage {
       return;
     }
     this.restaurants = this.restaurants.filter((v) => {
-      if(v.Name && q) {
-        if (v.Name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+      if(v.RestaurantName && q) {
+        if (v.RestaurantName.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
         }
         return false;
@@ -74,5 +75,7 @@ export class HomePage {
   viewMenu(resto){
     this.navCtrl.push(MenuPage,{rest : resto });
   }
-
+gtNoti(){
+  this.navCtrl.push(NotificationsPage);
+}
 }

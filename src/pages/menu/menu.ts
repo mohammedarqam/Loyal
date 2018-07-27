@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { CartPage } from '../cart/cart';
 
 @IonicPage()
 @Component({
@@ -13,7 +12,7 @@ export class MenuPage {
   restaurant = this.navParams.get("rest");
   menuRef = firebase.database().ref("Menus");
   menuItems : Array<any>=[];
-  cartRef = firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).child("Cart/");
+  cartRef = firebase.database().ref("Carts/").child(firebase.auth().currentUser.uid).child("Items/");
   ftrBtns : boolean = false ;
   constructor(
   public navCtrl: NavController, 
@@ -92,7 +91,6 @@ atCart(){
   });
   this.presentToast("Items Added");
   this.getMenu();
-  this.navCtrl.push(CartPage);
   loading.dismiss();
 }
 
