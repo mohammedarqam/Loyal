@@ -34,6 +34,7 @@ export class CartPage {
     this.getCart();
     this.getCartValue();
     this.getCreditVal();
+    
   }
 
   ionViewDidEnter(){
@@ -55,6 +56,7 @@ export class CartPage {
         this.cartItems.push(item);
         return false;
       });
+      console.log(this.cartItems);
     }).then(()=>{
       if(this.cartItems.length>0){
         this.data = true;
@@ -62,7 +64,7 @@ export class CartPage {
         this.data = false;
       }
       loading.dismiss();
-    }) ;
+    });
   }
 
   getCartValue(){
@@ -139,9 +141,13 @@ getCreditVal(){
       CreditUsed : credit,
       OrderId : this.genOrderId()
     }).then(()=>{
-      this.getCart();
-      this.getCartValue();
-      loading.dismiss();
+      this.cartValRef.on('value',cartval=>{
+        if(!cartval.exists()){
+          this.getCart();
+          this.getCartValue();
+          loading.dismiss();
+         }
+      })
 
     })
 

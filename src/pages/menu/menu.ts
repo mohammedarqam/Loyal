@@ -53,7 +53,7 @@ getMenu(){
   });
 }
 
-atCart(){
+atCart(resta){
   let loading = this.loadingCtrl.create({
     content: 'Please wait...'
   });
@@ -64,12 +64,12 @@ atCart(){
       this.cartRef.child(item.key).transaction(function(currentData){
         if(currentData==null){
           item.Value = +item.Price * +item.Quantity;
-          return {Name : item.Name, Price : item.Price,Quantity : item.Quantity, Value : item.Value }
+          return {Name : item.Name, Price : item.Price,Quantity : item.Quantity, Value : item.Value, Restaurant : resta.key }
         }else{
           item.Value = +item.Price * +item.Quantity;
           currentData.Quantity = currentData.Quantity+ item.Quantity ;
           currentData.Value = currentData.Value + item.Value;
-          return {Name : item.Name,Price : item.Price ,Quantity :currentData.Quantity, Value: currentData.Value} ;
+          return {Name : item.Name,Price : item.Price ,Quantity :currentData.Quantity, Value: currentData.Value , Restaurant : resta.key } ;
         }
       }).then(()=>{
 

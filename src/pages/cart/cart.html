@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar color="primary" >
       <ion-title>Cart</ion-title>
-      <ion-buttons end>
+      <ion-buttons end *ngIf="totCartValue>0" >
         <button ion-button clear >Rs. {{totCartValue}} </button>
       </ion-buttons>
     </ion-navbar>
@@ -9,7 +9,7 @@
   
   <ion-content padding>
   
-  <ion-grid>
+  <ion-grid *ngIf="cartItems.length > 0" >
   <ion-row *ngFor="let item of cartItems" >
     <ion-card>
     <ion-card-content>
@@ -33,6 +33,13 @@
   </ion-row>
   </ion-grid>
   
+  <ion-card *ngIf="!cartItems.length >0" >
+    <ion-card-content>
+      <ion-card-title>
+        Cart Empty
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
   
   </ion-content>
   <ion-footer>
